@@ -26,7 +26,7 @@ var Layout = React.createClass({
     },
 
     render : function() {
-        var title = "Todo List:";
+        var title = "Todo List";
         console.log("layout render");
 
         return (
@@ -38,6 +38,7 @@ var Layout = React.createClass({
                         </div>
                     </div>
                 </div>
+                <hr/>
                 <Loader loaded={this.state.loading} />
                 <AddComponent addTodo={this.addTodo}/>
                 <TodoComponent todos={this.state.todos}/>

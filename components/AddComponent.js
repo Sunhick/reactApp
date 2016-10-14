@@ -1,5 +1,7 @@
 var React = require('react');
 
+var SearchComponent = require('./SearchComponent');
+
 var AddComponent = React.createClass({
     getInitialState: function() {
         return {
@@ -33,12 +35,17 @@ var AddComponent = React.createClass({
             <div className="section">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-4">
+                        <div className="col-md-3">
                             <input className="form-control" type="text" value={this.state.value} onChange={this.handleChange} name="value" placeholder="Enter todo"/>
                         </div>
-                        <button className={style} name="add" 
-                            disabled={!this.state.value}
-                            onClick={()=> {this.props.addTodo(this.state.value, this.callback)}}> Add Item </button>
+                        <div className="col-md-1">
+                            <button className={style} name="add" 
+                                disabled={!this.state.value}
+                                onClick={()=> {this.props.addTodo(this.state.value, this.callback)}}> Add Item </button>
+                        </div>
+                        <div className="col-md-4">
+                            <SearchComponent />
+                        </div>
                     </div>
                 </div>
             </div>
