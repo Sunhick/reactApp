@@ -34,7 +34,7 @@ var Layout = React.createClass({
     },
 
     filterTodo: function(e) {
-        var filter = e.target.value;
+        var filter = e.target.value.toLowerCase();
 
         if (filter) {
             this.state.filter = this.state.todos;
