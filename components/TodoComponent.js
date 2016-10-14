@@ -4,12 +4,12 @@
 *
 *  Copyright (c) 2016.
 */
-var React = require('react');
+import React from "react";
 
-var EntryComponent = require('./EntryComponent');
+import EntryComponent from "./EntryComponent";
 
-var TodoComponent = React.createClass({
-    render: function() {
+export default class TodoComponent extends React.Component {
+    render() {
         const todos = this.props.todos.map((title, i)=> 
             <div key={i}>
                 <EntryComponent title={title} />
@@ -28,6 +28,4 @@ var TodoComponent = React.createClass({
             </div>
             );
     }
-});
-
-module.exports = TodoComponent;
+}

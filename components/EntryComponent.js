@@ -4,16 +4,14 @@
 *
 *  Copyright (c) 2016.
 */
-var React = require('react');
+import React from "react";
 
-var EntryComponent = React.createClass({
-    render: function() {
+export default class EntryComponent extends React.Component {
+    render() {
         return (
             <label>
                 <input type="checkbox" /> {this.props.title}
             </label>
             );
     }
-});
-
-module.exports = EntryComponent;
+}

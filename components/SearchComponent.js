@@ -4,10 +4,14 @@
 *
 *  Copyright (c) 2016.
 */
-var React = require('react');
+import React from "react";
 
-var SearchComponent = React.createClass({
-    render: function() {
+// Note:
+// If class is exported as "export default class SomeComponent" then you i can import as "import SomeComponent from ..."
+// If it's exported with no defualt "export class SomeComponent" then, "import {SomeComponent} from ..."
+
+export class SearchComponent extends React.Component{
+    render() {
         return (
             <div className="col-md-12">
                 <div className="col-md-6">
@@ -20,6 +24,4 @@ var SearchComponent = React.createClass({
             </div>
             );
     }
-});
-
-module.exports = SearchComponent;
+}

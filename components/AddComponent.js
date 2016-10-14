@@ -4,25 +4,26 @@
 *
 *  Copyright (c) 2016.
 */
-var React = require('react');
+import React from "react";
 
-var SearchComponent = require('./SearchComponent');
+import {SearchComponent} from "./SearchComponent";
 
-var AddComponent = React.createClass({
+export default class AddComponent extends React.Component{
 
-    getInitialState: function() {
-        return {
+    constructor() {
+        super();
+        this.state = {
             value: ""
         };
-    },
+    }
 
-    handleChange: function(e) {
+    handleChange(e) {
         this.setState({
             value: e.target.value
         });
-    },
+    }
 
-    callback: function(success) {
+    callback(success) {
         if (success) {
             console.log("reset the value");
             this.setState({value: ""});
@@ -30,9 +31,9 @@ var AddComponent = React.createClass({
         }
 
         console.log("dont reset the value");
-    },
+    }
 
-    render: function() {
+    render() {
         var style = "btn btn-primary";
         if (!this.state.value) {
             style = "btn btn-default";
@@ -44,12 +45,12 @@ var AddComponent = React.createClass({
                     <div className="row">
                         <div className="col-md-3">
                             <input className="form-control" type="text" value={this.state.value} 
-                                onChange={this.handleChange} name="value" placeholder="Enter todo"/>
+                                onChange={this.handleChange.bind(this)} name="value" placeholder="Enter todo here"/>
                         </div>
                         <div className="col-md-1">
                             <button className={style} name="add" 
                                 disabled={!this.state.value}
-                                onClick={()=> {this.props.addTodo(this.state.value, this.callback)}}> Add Item </button>
+                                onClick={()=> {this.props.addTodo(this.state.value, this.callback.bind(this))}}> Add Item </button>
                         </div>
                         <div className="col-md-4">
                             <SearchComponent filter={this.props.filter}/>
@@ -59,6 +60,4 @@ var AddComponent = React.createClass({
             </div>
             );
     }
-});
-
-module.exports = AddComponent;
+}

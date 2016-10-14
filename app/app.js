@@ -4,10 +4,10 @@
 *
 *  Copyright (c) 2016.
 */
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from "react";
+import ReactDOM from "react-dom";
 
-var RootContainer = require('../containers/RootContainer');
+import RootContainer from "../containers/RootContainer";
 
 var app = document.getElementById('app');
 ReactDOM.render(<RootContainer />, app);

@@ -4,15 +4,13 @@
 *
 *  Copyright (c) 2016.
 */
-var React = require('react');
+import React from "react";
 
-var ControlsContainer = React.createClass({
-    render: function() {
+export class ControlsContainer extends React.Component{
+    render() {
         return (
             <div>
             </div>
             );
     }
-});
-
-module.exports = ControlsContainer;
+}

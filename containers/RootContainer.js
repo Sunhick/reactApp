@@ -4,36 +4,37 @@
 *
 *  Copyright (c) 2016.
 */
-var React = require('react');
-var Loader = require('react-loader');
+import React from "react";
+import Loader from "react-loader";
 
-var AddComponent = require('../components/AddComponent');
-var TodoComponent = require('../components/TodoComponent');
+import AddComponent from "../components/AddComponent";
+import TodoComponent from "../components/TodoComponent";
 
-var Layout = React.createClass({
-    
-    getInitialState : function() {
-        return {
+export default class RootContainer extends React.Component {
+
+    constructor() {
+        super();
+        this.state = {
             loading: true,
             todos: [],
             filtering: false,
             filter: []
         };
-    },
-
-    addTodo: function(value, callback) {
+    }
+    
+    addTodo(value, callback) {
         if (value) {
             var list = this.state.todos;
             list.push(value);
-            this.setState({todos: list});
+            this.setState({todos: list, loading: false});
             console.log(this.state);
 
             // after adding call the callback
             callback(true);
         }
-    },
+    }
 
-    filterTodo: function(e) {
+    filterTodo(e) {
         var filter = e.target.value.toLowerCase();
 
         if (filter) {
@@ -53,10 +54,10 @@ var Layout = React.createClass({
         }
 
         this.setState({filtering: false});
-    },
+    }
 
-    render : function() {
-        var title = "Todo List";
+    render() {
+        var title = "Todo List (ES6)";
         console.log("layout render");
 
         var todos = this.state.filtering? this.state.filter : this.state.todos;
@@ -71,12 +72,10 @@ var Layout = React.createClass({
                     </div>
                 </div>
                 <hr/>
-                <Loader loaded={this.state.loading} />
-                <AddComponent addTodo={this.addTodo} filter={this.filterTodo}/>
+                <Loader loaded={!this.state.loading} />
+                <AddComponent addTodo={this.addTodo.bind(this)} filter={this.filterTodo.bind(this)}/>
                 <TodoComponent todos={todos} />
             </div>
             );
     }
-});
-
-module.exports = Layout;
+}
