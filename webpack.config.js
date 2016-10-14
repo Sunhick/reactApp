@@ -42,12 +42,12 @@ module.exports = {
                 to: __dirname + '/dist/manifest.json'
             },
             {
-                from: 'bower_components/bootstrap/dist/css/bootstrap.min.css',
-                to: __dirname + '/dist/bower_components/bootstrap/dist/css/bootstrap.min.css'
+                from: 'bower_components/bootstrap/dist/css/',
+                to: __dirname + '/dist/bower_components/bootstrap/dist/css/'
             },
             {
-                from: 'bower_components/jquery/dist/jquery.min.js',
-                to: __dirname + '/dist/bower_components/jquery/dist/jquery.min.js'
+                from: 'bower_components/jquery/dist/',
+                to: __dirname + '/dist/bower_components/jquery/dist/'
             }
         ]),
         // new webpack.optimize.UglifyJsPlugin({
