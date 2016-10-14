@@ -19,36 +19,36 @@ module.exports = {
     output: {
         filename: 'app.min.js',
         path: __dirname + '/dist'
-    }
-    // plugins: [
-    //     HtmlWebpackPluginConfig,
-    //     new CopyWebpackPlugin([
-    //         {
-    //             from: 'images/',
-    //             to: __dirname + '/dist/images/'
-    //         },
-    //         {
-    //             from: 'static/',
-    //             to: __dirname + '/dist/static'
-    //         },
-    //         {
-    //             from: 'manifest.json',
-    //             to: __dirname + '/dist/manifest.json'
-    //         },
-    //         {
-    //             from: 'bower_components/bootstrap/dist/css/bootstrap.min.css',
-    //             to: __dirname + '/dist/bower_components/bootstrap/dist/css/bootstrap.min.css'
-    //         },
-    //         {
-    //             from: 'bower_components/jquery/dist/jquery.min.js',
-    //             to: __dirname + '/dist/bower_components/jquery/dist/jquery.min.js'
-    //         }
-    //     ]),
-    //     new webpack.optimize.UglifyJsPlugin({
-    //         minimize: true,
-    //         compress: {
-    //             warnings: false
-    //         }
-    //     })
-    // ]
+    },
+    plugins: [
+        HtmlWebpackPluginConfig,
+        new CopyWebpackPlugin([
+            {
+                from: 'images/',
+                to: __dirname + '/dist/images/'
+            },
+            {
+                from: 'static/',
+                to: __dirname + '/dist/static'
+            },
+            {
+                from: 'manifest.json',
+                to: __dirname + '/dist/manifest.json'
+            },
+            {
+                from: 'bower_components/bootstrap/dist/css/bootstrap.min.css',
+                to: __dirname + '/dist/bower_components/bootstrap/dist/css/bootstrap.min.css'
+            },
+            {
+                from: 'bower_components/jquery/dist/jquery.min.js',
+                to: __dirname + '/dist/bower_components/jquery/dist/jquery.min.js'
+            }
+        ]),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     minimize: true,
+        //     compress: {
+        //         warnings: false
+        //     }
+        // })
+    ]
 }

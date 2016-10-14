@@ -5,14 +5,29 @@ var AddComponent = require('../components/AddComponent');
 var TodoComponent = require('../components/TodoComponent');
 
 var Layout = React.createClass({
-    getInitState : function() {
+    
+    getInitialState : function() {
         return {
-            loading: true
+            loading: true,
+            todos: []
         };
     },
 
+    addTodo: function(value, callback) {
+        if (value) {
+            var list = this.state.todos;
+            list.push(value);
+            this.setState({todos: list});
+            console.log(this.state);
+
+            // after adding call the callback
+            callback(true);
+        }
+    },
+
     render : function() {
-        var title = "Todo list";
+        var title = "Todo List:";
+        console.log("layout render");
 
         return (
             <div className="section">
@@ -23,9 +38,9 @@ var Layout = React.createClass({
                         </div>
                     </div>
                 </div>
-
-                <AddComponent />
-                <TodoComponent />
+                <Loader loaded={this.state.loading} />
+                <AddComponent addTodo={this.addTodo}/>
+                <TodoComponent todos={this.state.todos}/>
             </div>
             );
     }
