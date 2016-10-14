@@ -1,3 +1,9 @@
+/**
+*  @Author: Sunil bn <sunhick@gmail.com>
+*  @Desc: javascript file
+*
+*  Copyright (c) 2016.
+*/
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     template: __dirname + '/app/index.html',

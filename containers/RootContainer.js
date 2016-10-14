@@ -1,3 +1,9 @@
+/**
+*  @Author: Sunil bn <sunhick@gmail.com>
+*  @Desc: javascript file
+*
+*  Copyright (c) 2016.
+*/
 var React = require('react');
 var Loader = require('react-loader');
 
@@ -29,7 +35,6 @@ var Layout = React.createClass({
 
     filterTodo: function(e) {
         var filter = e.target.value;
-        //console.log(filter);
 
         if (filter) {
             this.state.filter = this.state.todos;
