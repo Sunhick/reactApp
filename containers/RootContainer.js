@@ -8,7 +8,9 @@ import React from "react";
 import Loader from "react-loader";
 
 import AddComponent from "../components/AddComponent";
+import Dispatcher from "../Dispatcher";
 import TodoComponent from "../components/TodoComponent";
+import TodoStoreEvent from "../Store/TodoStore";
 
 export default class RootContainer extends React.Component {
 
@@ -20,6 +22,22 @@ export default class RootContainer extends React.Component {
             filtering: false,
             filter: []
         };
+    }
+
+    updateTodo(data) {
+        console.log("got the event: ", data.Type);
+        console.log(data);
+        this.setState(data);
+    }
+
+    componentWillMount() {
+        console.log("component will mount");
+        TodoStoreEvent.on("change", this.updateTodo);
+    }
+
+    componentWillUnmount() {
+        console.log("component will unmount");
+        TodoStoreEvent.removeListener("change", this.updateTodo);
     }
     
     addTodo(value, callback) {
