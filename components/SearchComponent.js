@@ -5,7 +5,7 @@ var SearchComponent = React.createClass({
         return (
             <div className="col-md-12">
                 <div className="col-md-6">
-                    <input name="search" className="form-control" placeholder="Search" />
+                    <input name="search" className="form-control" onChange={this.props.filter} placeholder="Search" />
                 </div>
 
                 <div className="col-md-6">

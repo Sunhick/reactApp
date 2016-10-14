@@ -9,7 +9,9 @@ var Layout = React.createClass({
     getInitialState : function() {
         return {
             loading: true,
-            todos: []
+            todos: [],
+            filtering: false,
+            filter: []
         };
     },
 
@@ -25,9 +27,34 @@ var Layout = React.createClass({
         }
     },
 
+    filterTodo: function(e) {
+        var filter = e.target.value;
+        //console.log(filter);
+
+        if (filter) {
+            this.state.filter = this.state.todos;
+
+            var filtered = [];
+            $.each(this.state.todos, function(index, todo) {
+                console.log(index, todo);
+                if (todo.toLowerCase().indexOf(filter) !== -1) {
+                    filtered.push(todo);
+                }
+            });
+
+            this.setState({filter: filtered, filtering: true});
+            console.log("set state");
+            return;
+        }
+
+        this.setState({filtering: false});
+    },
+
     render : function() {
         var title = "Todo List";
         console.log("layout render");
+
+        var todos = this.state.filtering? this.state.filter : this.state.todos;
 
         return (
             <div className="section">
@@ -40,8 +67,8 @@ var Layout = React.createClass({
                 </div>
                 <hr/>
                 <Loader loaded={this.state.loading} />
-                <AddComponent addTodo={this.addTodo}/>
-                <TodoComponent todos={this.state.todos}/>
+                <AddComponent addTodo={this.addTodo} filter={this.filterTodo}/>
+                <TodoComponent todos={todos} />
             </div>
             );
     }

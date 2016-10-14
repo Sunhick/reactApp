@@ -3,6 +3,7 @@ var React = require('react');
 var SearchComponent = require('./SearchComponent');
 
 var AddComponent = React.createClass({
+
     getInitialState: function() {
         return {
             value: ""
@@ -36,7 +37,8 @@ var AddComponent = React.createClass({
                 <div className="container">
                     <div className="row">
                         <div className="col-md-3">
-                            <input className="form-control" type="text" value={this.state.value} onChange={this.handleChange} name="value" placeholder="Enter todo"/>
+                            <input className="form-control" type="text" value={this.state.value} 
+                                onChange={this.handleChange} name="value" placeholder="Enter todo"/>
                         </div>
                         <div className="col-md-1">
                             <button className={style} name="add" 
@@ -44,7 +46,7 @@ var AddComponent = React.createClass({
                                 onClick={()=> {this.props.addTodo(this.state.value, this.callback)}}> Add Item </button>
                         </div>
                         <div className="col-md-4">
-                            <SearchComponent />
+                            <SearchComponent filter={this.props.filter}/>
                         </div>
                     </div>
                 </div>
