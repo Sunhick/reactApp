@@ -24,6 +24,7 @@ export default class AddComponent extends React.Component{
     }
 
     callback(success) {
+        debugger;
         if (success) {
             console.log("reset the value");
             this.setState({value: ""});
